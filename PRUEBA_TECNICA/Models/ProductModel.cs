@@ -18,7 +18,7 @@ namespace PRUEBA_TECNICA.Models
 
 		public string category {  get; set; }
 
-		public string amount { get; set; }
+		public int? amount { get; set; }
 
 		public string price { get; set; }
 	}

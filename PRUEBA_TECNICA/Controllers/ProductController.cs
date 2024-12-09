@@ -105,7 +105,7 @@ namespace PRUEBA_TECNICA.Controllers
 					return NotFound($"No se encontró el usuario con el email: {id}");
 				}
 
-				return Ok($"Usuario con email {id} eliminado correctamente.");
+				return Ok(new {message = $"Usuario con email {id} eliminado correctamente."});
 			}
 			catch (Exception ex)
 			{
@@ -126,7 +126,7 @@ namespace PRUEBA_TECNICA.Controllers
 			try
 			{
 				// Verificar que los campos necesarios no sean nulos
-				if (product == null || string.IsNullOrEmpty(product.Name) || string.IsNullOrEmpty(product.Description) || product.amount != 0 || string.IsNullOrEmpty(product.category) || string.IsNullOrEmpty(product.Foto) || string.IsNullOrEmpty(product.price))
+				if (product == null || string.IsNullOrEmpty(product.Name) || string.IsNullOrEmpty(product.Description) || product.amount <= 0 || string.IsNullOrEmpty(product.category) || string.IsNullOrEmpty(product.Foto) || string.IsNullOrEmpty(product.price))
 				{
 					return BadRequest("Todos los campos son requeridos");
 				}
@@ -136,7 +136,7 @@ namespace PRUEBA_TECNICA.Controllers
 
 				if (isCreated)
 				{
-					return Ok("producto creado exitosamente.");
+					return Ok(new { message = "producto creado exitosamente." });
 				}
 				else
 				{
@@ -168,16 +168,16 @@ namespace PRUEBA_TECNICA.Controllers
 				// Si el usuario no fue encontrado, retornar NotFound
 				if (!isUpdated)
 				{
-					return NotFound($"No se encontró el usuario con el ID {id}");
+					return NotFound($"No se encontró el producto con el ID {id}");
 				}
 
 				// Si todo salió bien, retornar Ok
-				return Ok($"Usuario con ID {id} actualizado correctamente.");
+				return Ok(new { message = $"producto con ID {id} actualizado correctamente." });
 			}
 			catch (Exception ex)
 			{
 				// En caso de error, retornar BadRequest con el mensaje de la excepción
-				return BadRequest($"Hubo un problema al actualizar el usuario: {ex.Message}");
+				return BadRequest($"Hubo un problema al actualizar el producto: {ex.Message}");
 			}
 		}
 

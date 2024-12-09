@@ -58,7 +58,7 @@ namespace PRUEBA_TECNICA.Controllers
 					return NotFound($"No se encontró el usuario con el email: {email}");
 				}
 
-				return Ok($"Usuario con email {email} eliminado correctamente.");
+				return Ok(new { message = $"Usuario con email {email} eliminado correctamente." });
 			}
 			catch (Exception ex)
 			{
@@ -88,7 +88,7 @@ namespace PRUEBA_TECNICA.Controllers
 
 				if (isCreated)
 				{
-					return Ok("Usuario creado exitosamente.");
+					return Ok(new {message = "Usuario creado exitosamente." });
 				}
 				else
 				{
@@ -123,7 +123,7 @@ namespace PRUEBA_TECNICA.Controllers
 				}
 
 				// Si todo salió bien, retornar Ok
-				return Ok($"Usuario con ID {id} actualizado correctamente.");
+				return Ok(new {message = $"Usuario con ID {id} actualizado correctamente."});
 			}
 			catch (Exception ex)
 			{

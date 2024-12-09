@@ -68,11 +68,23 @@ builder.Services.AddScoped<IProductDbService, ProductDbService>();
 builder.Services.AddScoped<IUserDbService, UserDbService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 
+//QUITAR CORS
+builder.Services.AddCors(options =>
+{
+	options.AddPolicy("AllowAll", policy =>
+	{
+		policy.AllowAnyOrigin()
+			  .AllowAnyMethod()
+			  .AllowAnyHeader();
+	});
+});
+
 
 
 // Crear la aplicación
 var app = builder.Build();
 
+app.UseCors("AllowAll");
 // Usar autenticación y autorización
 app.UseAuthentication();
 app.UseAuthorization();
